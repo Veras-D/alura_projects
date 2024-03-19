@@ -1,3 +1,5 @@
+// Acerte o numero ou sofra as consequências!
+
 let playerName = prompt('Olá viajante, qual seu nome? ');
 let secretNumber = 42;
 let errorMessage = 'This is not a number';
@@ -26,9 +28,9 @@ if (playerAge >= 18 && playerAge < 130) {
             alert('Você errou, portanto ficará preso aqui pela eternidade hahahahahah!!!');
             alert('Ah vamos não precisa chorar, vou te dar uma chace, vamos tente de novo, vou te dar uma dica!');
             if (secretNumber < playerNumber) {
-                alert('O numero que estou pensando é menor que o seu!');
+                alert(`O numero que estou pensando é menor que ${playerNumber}!`);
             } else {
-                alert('O numero que estou pensando é maior que o seu!');
+                alert(`O numero que estou pensando é maior que ${playerNumber}!`);
             }
         }
     }
