@@ -4,6 +4,7 @@ let playerName = prompt('Olá viajante, qual seu nome? ');
 let secretNumber = 42;
 let errorMessage = 'This is not a number';
 let playerNumber = 0;
+let numTentativas = 0;
 
 alert('Bem Vindo ao Game Precognition Viajante ' + playerName);
 alert('Um momento ' + playerName + ', antes de continuarmos devo fazer uma pergunta muito importante!');
@@ -15,7 +16,7 @@ if (playerAge >= 18 && playerAge < 130) {
         alert(playerName + ' você não já é velho demais pra isso?');
     }
     alert('Olá Viajante ' + playerName + ', você entrou na câmara secreta do vidente, para escapar você terá de adivinhar qual numero estou pensando hahahaaha, você nunca escapará! ');
-    while (playerNumber != secretNumber){
+    while (playerNumber != secretNumber && numTentativas < 4){
         playerNumber = prompt('Então Viajante ' + playerName + ', em qual numero estou pensando? ');
     
         if (playerNumber == secretNumber) {
@@ -24,15 +25,21 @@ if (playerAge >= 18 && playerAge < 130) {
         } else if (!Number.isInteger(parseInt(playerNumber))) {
             alert(errorMessage);
         }else {
-            console.log('Você errou, portanto ficará preso aqui pela eternidade hahahahahah!!!');
-            alert('Você errou, portanto ficará preso aqui pela eternidade hahahahahah!!!');
-            alert('Ah vamos não precisa chorar, vou te dar uma chace, vamos tente de novo, vou te dar uma dica!');
-            if (secretNumber < playerNumber) {
-                alert(`O numero que estou pensando é menor que ${playerNumber}!`);
+            if (numTentativas == 3) {
+                alert('Você perdeu hahahahahahahahhaahahahahaha!!!');
             } else {
-                alert(`O numero que estou pensando é maior que ${playerNumber}!`);
+                console.log('Você errou, portanto ficará preso aqui pela eternidade hahahahahah!!!');
+                alert('Você errou, portanto ficará preso aqui pela eternidade hahahahahah!!!');
+                alert(`Ah vamos não precisa chorar, vou te dar mais ${3 - numTentativas} chace, vamos tente de novo, vou te dar uma dica!`);
+                if (secretNumber < playerNumber) {
+                    alert(`O numero que estou pensando é menor que ${playerNumber}!`);
+                } else {
+                    alert(`O numero que estou pensando é maior que ${playerNumber}!`);
+                }
             }
+
         }
+        numTentativas++;
     }
 
 } else {
