@@ -1,10 +1,11 @@
 // Acerte o numero ou sofra as consequências!
 
 let playerName = prompt('Olá viajante, qual seu nome? ');
-let secretNumber = 42;
+let secretNumber = Math.floor(Math.random() * 100) + 1;
 let errorMessage = 'This is not a number';
 let playerNumber = 0;
 let numTentativas = 0;
+
 
 alert('Bem Vindo ao Game Precognition Viajante ' + playerName);
 alert('Um momento ' + playerName + ', antes de continuarmos devo fazer uma pergunta muito importante!');
@@ -30,7 +31,8 @@ if (playerAge >= 18 && playerAge < 130) {
             } else {
                 console.log('Você errou, portanto ficará preso aqui pela eternidade hahahahahah!!!');
                 alert('Você errou, portanto ficará preso aqui pela eternidade hahahahahah!!!');
-                alert(`Ah vamos não precisa chorar, vou te dar mais ${3 - numTentativas} chace, vamos tente de novo, vou te dar uma dica!`);
+                let plural = numTentativas > 1 ? ''  : 's'
+                alert(`Ah vamos não precisa chorar, vou te dar mais ${3 - numTentativas} chance${plural}, vamos tente de novo, vou te dar uma dica!`);
                 if (secretNumber < playerNumber) {
                     alert(`O numero que estou pensando é menor que ${playerNumber}!`);
                 } else {
@@ -43,5 +45,6 @@ if (playerAge >= 18 && playerAge < 130) {
     }
 
 } else {
-alert('Menores de idade são proibidos, vá embora!!!');
+    let systemMessage = playerAge < 18 ? 'Menores de idade são proibidos, vá embora!!!' : 'Mentirosos não são bem vindos!!!'
+    alert(systemMessage);   
 }
