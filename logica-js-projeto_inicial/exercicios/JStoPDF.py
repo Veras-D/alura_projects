@@ -1,6 +1,7 @@
 import os
-import markdown2
-from weasyprint import HTML
+import subprocess
+# import markdown2
+# from weasyprint import HTML
 
 
 def convert_js_to_md(js_files, md_file_path):
@@ -24,22 +25,6 @@ def convert_js_to_md(js_files, md_file_path):
         md_file.write(md_content)
 
 
-def convert_md_to_html(md_file_path):
-    with open(md_file_path, 'r', encoding='utf-8') as md_file:
-        md_content = md_file.read()
-    html_content = markdown2.markdown(md_content)
-    return html_content
-
-
-def convert_html_to_pdf(html_content, pdf_file_path, css_file_path):
-    HTML(string=html_content, base_url=os.path.dirname(css_file_path)).write_pdf(pdf_file_path, stylesheets=[css_file_path])
-
-
-def md_to_pdf(md_file_path, pdf_file_path, css_file_path):
-    html_content = convert_md_to_html(md_file_path)
-    convert_html_to_pdf(html_content, pdf_file_path, css_file_path)
-
-
 
 # Obtém o diretório do script atual
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -49,12 +34,11 @@ js_files = [os.path.join(script_dir, file_name) for file_name in os.listdir(scri
 
 # Define o caminho para o arquivo .md final
 md_file_path = os.path.join(script_dir, 'ex_logica_js.md')
+pdf_file_path = os.path.join(script_dir, 'ex_logica_js.pdf')
+css_file_path = os.path.join(script_dir, 'style.css')
 
 # Converte os arquivos .js para um único arquivo .md
 convert_js_to_md(js_files, md_file_path)
 
-md_file_path = os.path.join(script_dir, 'ex_logica_js.md')
-pdf_file_path = os.path.join(script_dir, 'ex_logica_js.pdf')
-css_file_path = os.path.join(script_dir, 'style.css')
 
-md_to_pdf(md_file_path, pdf_file_path, css_file_path)
+subprocess.run(['pandoc', '-t', 'html5', '--css', css_file_path, md_file_path, '-o', pdf_file_path])
