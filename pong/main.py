@@ -14,6 +14,15 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_w]:
+        if not config.PLAYER_POS_Y <= 0:
+            config.PLAYER_POS_Y -= config.PLAYER_SPEED
+        
+    if keys[pygame.K_s]:
+        if not config.PLAYER_POS_Y >= config.SCREEN_HEIGHT - config.CHAR_HEIGTH:
+            config.PLAYER_POS_Y += config.PLAYER_SPEED
+
     config.BOLL_POS_X += config.SPEED_X * config.ACER
     config.BOLL_POS_Y += config.SPEED_Y * config.ACER
     
@@ -26,6 +35,7 @@ while running:
         # Usar isso para fazer pontuação
         # Copiar esse trecho mudando da parede apara o player e o adversário e player
             # Usar essa parte também para aumentar a aceleração
+            # Colocar som nessa parte?
         
 
     if  config.BOLL_POS_Y <= 0 or config.BOLL_POS_Y >= config.SCREEN_HEIGHT - config.BOLL_HEIGTH:
