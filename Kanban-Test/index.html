@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Kanban</title>
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <div class="kanban">
+    <div class="column" draggable="true">
+      <div class="column-header">
+        <h2>A fazer</h2>
+        <button class="botao-excluir-coluna">X</button>
+      </div>
+    </div>
+    <div class="column" draggable="true">
+      <div class="column-header">
+        <h2>Em andamento</h2>
+        <button class="botao-excluir-coluna">X</button>
+      </div>
+    </div>
+    <div class="column" draggable="true">
+      <div class="column-header">
+        <h2>Concluído</h2>
+        <button class="botao-excluir-coluna">X</button>
+      </div>
+    </div>
+ </div>
+ <div class="centralizar-div">
+    <div>
+        <input type="text" id="nova-tarefa" placeholder="Nova Tarefa">
+        <button id="adicionar-tarefa">Adicionar Tarefa</button>
+        <br>
+        <input type="text" id="nova-coluna" placeholder="Nova Coluna">
+        <button id="adicionar-coluna">Adicionar Coluna</button>
+    </div>
+ </div>
+ <script src="script.js"></script>
+</body>
+</html>

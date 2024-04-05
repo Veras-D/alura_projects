@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.kanban {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as colunas quebrem para a próxima linha se necessário */
+    justify-content: center; /* Centraliza as colunas horizontalmente */
+    padding: 20px;
+    overflow-x: auto; /* Adiciona uma barra de rolagem horizontal, se necessário */
+}
+
+.column {
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px; /* Largura fixa para as colunas */
+    margin: 0 10px 20px; /* Espaçamento entre as colunas e na parte inferior */
+}
+
+.column-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Adicionado para posicionar o botão de excluir */
+}
+
+.column h2 {
+    margin-top: 0;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.botao-excluir {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.adicionar-tarefa {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.adicionar-tarefa input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.adicionar-tarefa button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.botao-excluir-coluna {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Estilos para os Campos de Entrada */
+  #nova-tarefa, #nova-coluna {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #4CAF50; /* Borda verde */
+    border-radius: 4px;
+    margin-bottom: 10px; /* Espaçamento entre os campos de entrada */
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total do campo */
+  }
+  
+  /* Estilos para os Botões */
+  #adicionar-tarefa, #adicionar-coluna {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total do botão */
+  }
+  
+  /* Estilos para o Placeholder */
+  #nova-tarefa::placeholder, #nova-coluna::placeholder {
+    text-align: center; /* Centraliza o texto do placeholder */
+    color: #888; /* Cor do texto do placeholder */
+  }
+  .centralizar-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Espaçamento superior */
+}
