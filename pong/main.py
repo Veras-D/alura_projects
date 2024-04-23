@@ -22,11 +22,6 @@ while running:
     if keys[pygame.K_s]:
         if not config.PLAYER_POS_Y >= config.SCREEN_HEIGHT - config.CHAR_HEIGTH:
             config.PLAYER_POS_Y += config.PLAYER_SPEED
-
-    config.BOLL_POS_X += config.SPEED_X * config.ACER
-    config.BOLL_POS_Y += config.SPEED_Y * config.ACER
-    
-    config.ADVS_POS_Y += config.ADVS_SPEED
     
     # Colocar Biri-Biri como trilha  sonora para o jogo
     
@@ -36,14 +31,20 @@ while running:
         config.ACER = 6
         config.SPEED_X, config.SPEED_Y = config.speed_fun()
 
-        if config.BOLL_POS_X <= 0:
-            config.PLAYER_POINTERS += 1
-        
-        if config.BOLL_POS_X >= config.SCREEN_WIDTH - config.BOLL_WIDTH:
-            config.ADVS_POINTERS += 1
-        # Copiar esse trecho mudando da parede apara o player e o adversário e player
-            # Usar essa parte também para aumentar a aceleração
-            # Colocar som nessa parte?
+    if config.BOLL_POS_X <= 0:
+        config.PLAYER_POINTERS += 1
+        window.blit(text_player, text_player_rect)
+    
+    if config.BOLL_POS_X >= config.SCREEN_WIDTH - config.BOLL_WIDTH:
+        config.ADVS_POINTERS += 1
+        font = pygame.font.Font(None, 36)
+        text_adversario = font.render(str(config.ADVS_POINTERS), True, config.WHITE)  
+        text_adversario_rect = text_adversario.get_rect()
+        text_adversario_rect.center = (config.SCREEN_WIDTH // 2 - 20, 30)  
+        window.blit(text_adversario, text_adversario_rect)
+    # Copiar esse trecho mudando da parede apara o player e o adversário e player
+        # Usar essa parte também para aumentar a aceleração
+        # Colocar som nessa parte?
     
     if  config.BOLL_POS_Y <= 0 or config.BOLL_POS_Y >= config.SCREEN_HEIGHT - config.BOLL_HEIGTH:
         config.SPEED_Y = -config.SPEED_Y
@@ -80,6 +81,11 @@ while running:
     # Desenha os textos na tela
     window.blit(text_player, text_player_rect)
     window.blit(text_adversario, text_adversario_rect)
+    
+    config.BOLL_POS_X += config.SPEED_X * config.ACER
+    config.BOLL_POS_Y += config.SPEED_Y * config.ACER
+    
+    config.ADVS_POS_Y += config.ADVS_SPEED    
     
     pygame.display.update()
     
